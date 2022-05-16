@@ -4,49 +4,53 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DE_THI_THU_2
+namespace Bai_1_0_OnTapNET101_CRUD
 {
     internal class Program
     {
+        //CRUD người yêu mới
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
-            Console.InputEncoding = Encoding.UTF8;
-            QLSV qLSV = new QLSV();
-            string luachon;
-            
+            NYMoiService ny = new NYMoiService();
+            string _input;
             do
             {
-                Console.WriteLine("Menu");
-                Console.WriteLine("1.Nhập");
-                Console.WriteLine("2.Xuất");
-                Console.WriteLine("3.Tìm");
-                Console.WriteLine("4.Xóa");
+                Console.WriteLine(Guid.NewGuid());
+                Console.WriteLine("1.Thêm");
+                Console.WriteLine("2.Sửa");
+                Console.WriteLine("3.Tìm Kiếm");
+                Console.WriteLine("4.In Danh Sách");
+                Console.WriteLine("5.Xóa");
                 Console.WriteLine("0.Thoát");
-                Console.WriteLine("Mời bạn lựa chọn: ");
-                luachon = Console.ReadLine();
-                switch (luachon)
+                Console.WriteLine("Mời bạn chọn:");
+                 _input = Console.ReadLine();
+                switch (_input)
                 {
                     case "1":
-                        qLSV.nhap();
+                        ny.themNY1();
                         break;
                     case "2":
-                        qLSV.xuat();
+                        ny.Sua();
                         break;
                     case "3":
-                        qLSV.tim();
+                        ny.TimKiem();
                         break;
                     case "4":
-                        qLSV.xoa();
+                        ny.InDs();
+                        break;
+                    case "5":
+                        ny.Xoa();
                         break;
                     case "0":
-                        Environment.ExitCode = 0;
-                        break;
+                        Console.WriteLine("Bạn chọn thoát");
+                        return;
                     default:
-                        Console.WriteLine("Mục bạn chọn không có vui lòng chọn lại");
+                        Console.WriteLine("Chức năng không tồn tại chọn lại");
                         break;
                 }
-            } while (!(luachon == "5"));
+
+            } while (!(_input=="5"));
         }
     }
 }
